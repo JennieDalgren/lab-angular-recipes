@@ -34,13 +34,19 @@ export class RecipeDetailsComponent implements OnInit {
       .subscribe((ingredients) => this.ingredients = ingredients);
   }
 
-  handleAddIngredient(ingredientId, dishId, quantity) {
+  handleAddIngredient(ingredientId, dishId, quantity, ingredientName) {
     this.dishes.postIngredients(ingredientId, dishId, quantity)
+    //this part updates the quantity directly. but not if the ingredient doesn't exist on that recipe
+    let found = false;
     this.recipe.ingredients.forEach((element)=>{
       if (element.ingredientId._id === ingredientId) {
         element.quantity = parseInt(element.quantity) + parseInt(quantity)
+        found = true;
       }
-    });
+    })
+    if (!found) {
+      this.recipe.ingredients.push(ingredientId, dishId, quantity, ingredientName)
+    }
   }
 
 }

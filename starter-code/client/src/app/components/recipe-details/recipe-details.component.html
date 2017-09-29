@@ -19,9 +19,9 @@
 
 </div>
 
-<h2>Add ingredient</h2>
+<h2>Add ingredient to recipe</h2>
 <div *ngFor="let ingredient of ingredients">
   <p>{{ingredient.name}}</p>
   <input type="number" placeholder="quantity" #quantity>
-  <button (click)="handleAddIngredient(ingredient._id, recipe._id, quantity.value )">add</button>
+  <button (click)="handleAddIngredient(ingredient._id, recipe._id, quantity.value, ingredient.name)">add</button>
 </div>
