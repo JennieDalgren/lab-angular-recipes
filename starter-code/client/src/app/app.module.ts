@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { DishesService } from './services/dishes.service';
+import { IngredientsService } from './services/ingredients.service';
+
 
 import { AppComponent } from './app.component';
 import { RecipesListComponent } from './components/recipes-list/recipes-list.component';
@@ -30,7 +32,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
 
   ],
-  providers: [DishesService],
+  providers: [DishesService, IngredientsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,3 +8,10 @@
   <img src="{{recipe.image}}">
   <a [routerLink]="['/home']"> HOME </a>
 </div>
+
+<div *ngFor="let ingredient of ingredients">
+  <p>{{ingredient.name}}</p>
+  <input type="text" placeholder="quantity">
+  <button>add</button>
+
+</div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Recipe } from '../models/recipe';
+
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -8,7 +8,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DishesService {
 
-  recipes: Recipe[]
 
   constructor(private http: Http) {
 
