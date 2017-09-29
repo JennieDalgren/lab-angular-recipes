@@ -19,4 +19,10 @@ export class DishesService {
       .map((res: Response) => res.json());
   }
 
+   getRecipe(id) {
+    return this.http.get(`http://localhost:3000/api/dishes/${id}`)
+      .map((res: Response) => res.json());
+  }
+
+
 }

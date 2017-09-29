@@ -5,10 +5,10 @@
     <li *ngFor="let recipe of recipes">
 
         <p>{{recipe.name}}</p>
-        <p>{{recipe.description}}</p>
-        <img src="{{recipe.image}}" alt="{{recipe.name}}">
+        <a [routerLink]="['/home', recipe._id]">See recipe</a>
+
 
     </li>
-    
+
 
 </ul>

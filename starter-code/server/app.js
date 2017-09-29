@@ -7,6 +7,9 @@ const bodyParser   = require('body-parser');
 const routes       = require('./routes/index');
 const cors         = require('cors');
 
+const responses = require('./helpers/responses');
+
+
 require('./config/database');
 const app = express();
 app.use(cors());
@@ -37,9 +40,7 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  responses.unexpectedError(req, res, err);
 });
 
 module.exports = app;
