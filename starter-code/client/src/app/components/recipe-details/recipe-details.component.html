@@ -2,16 +2,26 @@
   ...loading
 </div>
 
-<div *ngIf="recipe">
-  <p>{{recipe.name}}</p>
+<a [routerLink]="['/home']">Back to recipes</a>
+
+<div class="recipe" *ngIf="recipe">
+  <h3>{{recipe.name}}</h3>
   <p>{{recipe.description}}</p>
   <img src="{{recipe.image}}">
-  <a [routerLink]="['/home']"> HOME </a>
+
+  <h3>Recipe ingredients</h3>
+  <div class="recipe-ingredient-list" *ngFor="let ingredient of recipe.ingredients">
+    <img src="{{ingredient.ingredientId.image}}">
+    <p>{{ingredient.ingredientId.name}}</p>
+    <p>{{ingredient.ingredientId.descirption}}</p>
+    <p>Quantity: {{ingredient.quantity}}</p>
+  </div>
+
 </div>
 
+<h2>Add ingredient</h2>
 <div *ngFor="let ingredient of ingredients">
   <p>{{ingredient.name}}</p>
-  <input type="text" placeholder="quantity">
-  <button>add</button>
-
+  <input type="number" placeholder="quantity" #quantity>
+  <button (click)="handleAddIngredient(ingredient._id, recipe._id, quantity.value )">add</button>
 </div>

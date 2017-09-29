@@ -13,6 +13,7 @@ export class RecipeDetailsComponent implements OnInit {
   recipeId: string;
   recipe: any;
   ingredients: any;
+  ingredientId: string;
 
   constructor(private dishes: DishesService, private route: ActivatedRoute,  private IngredientsService: IngredientsService) { }
 
@@ -31,6 +32,15 @@ export class RecipeDetailsComponent implements OnInit {
   getIngredients() {
     this.IngredientsService.getIngredients()
       .subscribe((ingredients) => this.ingredients = ingredients);
+  }
+
+  handleAddIngredient(ingredientId, dishId, quantity) {
+    this.dishes.postIngredients(ingredientId, dishId, quantity)
+    this.recipe.ingredients.forEach((element)=>{
+      if (element.ingredientId._id === ingredientId) {
+        element.quantity = parseInt(element.quantity) + parseInt(quantity)
+      }
+    });
   }
 
 }

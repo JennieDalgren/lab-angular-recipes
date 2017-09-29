@@ -18,7 +18,7 @@ router.get('/:id', (req, res, next) => {
     responses.invalidRequest(req, res, 'invalid dish id');
     return;
   }
-  Dish.findById(req.params.id, (err, dish) => {
+  Dish.findById(req.params.id).populate('ingredients.ingredientId').exec ((err, dish) => {
     if (err)         { return responses.unexpectedError(req, res, err); }
     if (!dish)      { return res.status(404).json(new Error("404")) }
 

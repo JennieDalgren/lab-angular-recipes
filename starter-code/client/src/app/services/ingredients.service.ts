@@ -12,4 +12,7 @@ export class IngredientsService {
    return this.http.get('http://localhost:3000/api/ingredients')
      .map((res: Response) => res.json());
  }
+
+ 
+
 }
